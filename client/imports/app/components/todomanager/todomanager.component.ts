@@ -14,6 +14,7 @@ import { TodoService } from "../../services";
 export class TodoManagerComponent {
 
     todos: Observable<Todo[]>;
+    taskModel: string;
     
     constructor(public todoService: TodoService) {
         this.todos = todoService.getTodos();
@@ -21,6 +22,13 @@ export class TodoManagerComponent {
 
     toggleTodo(todo: Todo) {
         this.todoService.toggleTodo(todo);
+    }
+
+    onSubmit() {
+        if ( this.taskModel.length > 0 ) {
+            this.todoService.createTodo(this.taskModel);
+            this.taskModel = '';
+        }
     }
 
 }
