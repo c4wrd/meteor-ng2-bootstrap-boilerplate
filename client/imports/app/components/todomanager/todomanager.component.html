@@ -1,1 +1,15 @@
-<!--component html goes here -->
+<h3>Todos</h3>
+<table class="table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Completed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr todo *ngFor="let $todo of todos | async"
+            [task]="$todo.task"
+            [completed]="$todo.completed"
+            (click)="toggleTodo($todo)"></tr>
+    </tbody>
+</table>

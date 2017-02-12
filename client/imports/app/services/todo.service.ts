@@ -1,20 +1,20 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ObservableCursor } from "meteor-rxjs";
-import { Todo } from "../../../../both/models/todo.model";
+import { Todo } from "../../../../both/models/todo.model"
 import { TodoCollection } from "../../../../both/collections/todo.collection";
 
 @Injectable()
 export class TodoService {
 
-    private apiTokens: ObservableCursor<Todo>;
+    private todoList: ObservableCursor<Todo>;
 
     constructor() {
-        this.apiTokens = TodoCollection.find({});
+        this.todoList = TodoCollection.find({});
     }
 
     getTodos(): Observable<Todo[]> {
-        return this.apiTokens.zone();
+        return this.todoList.zone();
     }
 
     createTodo(task: string) {
@@ -22,6 +22,14 @@ export class TodoService {
             task,
             completed: false
         });
+    }
+
+    toggleTodo(todo: Todo) {
+        TodoCollection.update(todo._id, {
+            $set: {
+                completed: !todo.completed
+            }
+        })
     }
 
 }

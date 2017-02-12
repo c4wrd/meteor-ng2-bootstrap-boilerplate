@@ -4,12 +4,14 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppComponent } from "./app.component";
 import { TodoService } from "./services";
 
-import { TodoModule } from "./components/todo_module";
+import { TodoComponent, TodoManagerComponent } from "./components";
 
 @NgModule({
   // Components, Pipes, Directive
   declarations: [
     AppComponent,
+    TodoComponent,
+    TodoManagerComponent
   ],
   // Entry Components
   entryComponents: [
@@ -22,14 +24,10 @@ import { TodoModule } from "./components/todo_module";
   // Modules
   imports: [
     BrowserModule,
-    TodoModule,
     NgbModule.forRoot()
   ],
   // Main Component
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
-  constructor() {
-
-  }
 }
