@@ -1,5 +1,5 @@
-import { TodoCollection } from "../../../both/collections/todo.collection";
-import { Todo } from "../../../both/models/todo.model"
+import { TodoCollection } from "../../../shared/collections/todo.collection";
+import { Todo } from "../../../shared/models/todo.model"
 
 export class Main {
   start(): void {
